@@ -20,13 +20,24 @@ class RemoveDuplicates
 		for(int i=1;i<n;i++)
 		{
 			//since the given array is sorted.
-			if(arr[i] != arr[i-1])
+			if(arr[temp-1] != arr[i])
 				arr1[temp++] = arr[i];	
 		}
 		for(int i=0;i<temp;i++)
 			arr[i] = arr1[i];
-		return res;
+		return temp;
 
+	}
+	//efficient soln
+	public static int fun3(int arr[],int n)
+	{
+		int res = 1;
+		for(int i=1;i<n;i++)
+		{
+			if(arr[i] != arr[res-1])
+				arr[res++] = arr[i];
+ 		}
+ 		return res;
 	}
 
 }
