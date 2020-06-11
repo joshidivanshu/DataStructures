@@ -21,6 +21,12 @@ class Maximum
     public void maximum(int[] arr,int n,int k)
     {
     	Deque<Integer> dq = new LinkedList<Integer>();
-    	
+    	// size of the deque should always be k
+    	// we should maintain the maximum element in front
+    	for(int i=0;i<n;i++)
+    	{
+    		
+    	}
+
     }
 }
