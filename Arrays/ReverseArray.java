@@ -9,6 +9,8 @@ class ReverseArray
 			int temp = arr[low];
 			arr[low] = arr[high];
 			arr[high] = temp;
+			low++;
+			high--;
 		}
 		return arr;
 	}
