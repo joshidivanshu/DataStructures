@@ -74,5 +74,37 @@ class Hashing1
 		}
 		return false;
 	}
+	//subarray with zero sum
+	//brute force approach.
+	public static boolean isSum(int arr[],int n)
+	{
+		for(int i=0;i<n;i++)
+		{
+			int curr_sum = 0;
+			for(int j=i;j<n;j++)
+			{
+				curr_sum += arr[j];
+				if(curr_sum == 0)
+					return true;
+			}
+		}
+		return false;
+	}
+	//efficient approach to get subarray with zero sum
+	public static boolean isSum(int arr[],int n)
+	{
+		Set<Integer> hs = new HashSet<>();
+		int pre_sum = 0;
+		for(int i=0;i<n;i++)
+		{
+			pre_sum += arr[i];
+			if(hs.contains(pre_sum))
+				return true;
+			if(pre_sum == 0)
+				return true;
+			hs.add(pre_sum);
+		}
+		return false;
+	}
 
 }
