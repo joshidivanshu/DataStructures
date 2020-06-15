@@ -62,16 +62,12 @@ class LevelOrderTraversal
 		q.add(root.key);
 		while(!q.isEmpty())
 		{
-			int count = q.size();
-			for(int i=count-1;i>=0;i--)
-			{
-				Node curr = q.poll();
-				arr.add(curr.data);
-				if(curr.left != null)
-					arr.add(curr.left);
-				if(curr.right != null)
-					arr.add(curr.right);
-			}
+			Node curr = q.poll();
+			arr.add(curr.data);
+			if(curr.left != null)
+				q.add(curr.left);
+			if(curr.right != null)
+				q.add(curr.right);
 		}
 		Collections.reverse(arr);
 		for(int i=0;i<arr.size();i++)

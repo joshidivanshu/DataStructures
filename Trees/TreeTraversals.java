@@ -75,6 +75,40 @@ class TreeTraversals
 		int sum = head.data+sum(head.left)+sum(head.right);
 		return sum;
 	}
+	//Spiral Form Traversal of Binary Tree
+	public static void spiralTraversal(Node head)
+	{
+		if(root == null)
+			return;
+		Queue<Node> q = new LinkedList<Integer>();
+		Stack<Integer> s = new Stack<>();
+		boolean reverse = false;
+		q.add(head);
+		while(!q.isEmpty())
+		{
+			int count = q.size();
+			for(int i=0;i<count;i++)
+			{
+				Node curr =  q.poll();
+				if(reverse)
+					s.push(curr.data);
+				else
+					System.out.print(curr.data+" ");
+				if(curr.left != null)
+					q.add(curr.left);
+				if(curr.right != null)
+					q.add(curr.right);
+			}
+			if(reverse)
+			{
+				while(!s.isEmpty())
+					System.out.print(s.pop()+" ");
+			}
+			reverse = !reverse;
+			System.out.println();
+		}
+
+	}
 
 
 }
