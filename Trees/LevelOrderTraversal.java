@@ -51,5 +51,30 @@ class LevelOrderTraversal
 			}
 			System.out.println();
 		}
+	}
+	//Reverse Level Order Traversal.
+	public static void printRevLevel(Node root)
+	{
+		if(root == null)
+			return;
+		List<Integer> arr = new ArrayList<>();
+		Queue<Node> q = new LinkedList<>();
+		q.add(root.key);
+		while(!q.isEmpty())
+		{
+			int count = q.size();
+			for(int i=count-1;i>=0;i--)
+			{
+				Node curr = q.poll();
+				arr.add(curr.data);
+				if(curr.left != null)
+					arr.add(curr.left);
+				if(curr.right != null)
+					arr.add(curr.right);
+			}
+		}
+		Collections.reverse(arr);
+		for(int i=0;i<arr.size();i++)
+			System.out.print(arr.get(i)+" ");
 	} 
 }
