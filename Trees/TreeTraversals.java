@@ -67,6 +67,14 @@ class TreeTraversals
 			printK(head.right,k-1);
 		}
 	}
+	//Sum of Binary Tree
+	public static int sum(Node head)
+	{
+		if(head == null)
+			return 0;
+		int sum = head.data+sum(head.left)+sum(head.right);
+		return sum;
+	}
 
 
 }

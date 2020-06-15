@@ -19,4 +19,5 @@ class ChildrenSumProperty
 				isTrue(root.right));
 
 	}
+	
 }
