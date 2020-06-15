@@ -30,4 +30,26 @@ class LevelOrderTraversal
 			System.out.println();
 		}
 	}
+	//2nd way
+	public static void printLevel(Node head)
+	{
+		if(head == null)
+			return;
+		Queue<Node> q = new LinkedList<>();
+		q.add(head);
+		while(!q.isEmpty())
+		{
+			int count = q.size();
+			for(int i=0;i<count;i++)
+			{
+				Node curr = q.poll();
+				System.out.print(curr.key+" ");
+				if(curr.left != null)
+					q.add(curr.left);
+				if(curr.right != null)
+					q.add(curr.right);
+			}
+			System.out.println();
+		}
+	} 
 }
