@@ -106,5 +106,36 @@ class Hashing1
 		}
 		return false;
 	}
+	//sub array with given sum
+	//naive soluntion.
+	public static boolean isSum(int arr[],int n,int sum)
+	{
+		for(int i=0;i<n;i++)
+		{
+			int curr_sum = 0;
+			for(int j=i;j<n;j++)
+			{
+				curr_sum += arr[i];
+				if(curr_sum == sum)
+					return true;
+			}
+		}
+		return false;
+	}
+	public static boolean isSum(int arr[],int n,int sum)
+	{
+		Set<Integer> hs = new HashSet<>();
+		int pre_sum  = 0;
+		for(int i=0;i<n;i++)
+		{
+			pre_sum += arr[i];
+			if(pre_sum == sum)
+				return true;
+			if(hs.contains(pre_sum-sum))
+				return true;
+			hs.add(pre_sum);
+		}
+		return false;
+	}
 
 }

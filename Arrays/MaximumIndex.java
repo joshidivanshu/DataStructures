@@ -16,6 +16,11 @@ class MaximumIndex
 		}
 		return max_diff;
 	}
+	//efficient soln.
+	public static int maxIndDiff(int arr[],int n)
+	{
+		
+	}
 	public static void main(String[] args)
 	{
 		int arr[] ={1,10};
