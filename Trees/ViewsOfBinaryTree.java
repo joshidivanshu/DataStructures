@@ -46,5 +46,67 @@ class ViewsOfBinaryTree
 			}
 		}
 	}
+	class Pair{
+		Node node;
+		int hd;
+		Pair(Node n,int h)
+		{
+			node = n;
+			hd = h;
+		}
+	}
+	//Top View of Binary Tree.
+	//We can solve this by the Concept of Vertical Traversal first check that out.
+	// we'll consider the horizontal distance and the first element at particular horizontal distance will be printed.
+	public static void topView(Node head)
+	{
+		if(head == null)
+			return;
+		Queue<Pair> q = new LinkedList<>();
+		TreeMap<Integer,Integer> hm = new TreeMap<>();
+		q.add(new Pair(0,head.data));
+		while(!q.isEmpty())
+		{
+			Pair p = q.poll();
+			Node curr = p.node;
+			int hd = p.hd;
+			if(!hm.containsKey(hd))
+				hm.put(hd,curr.data);
+			if(curr.left != null)
+				q.add(curr.left,hd-1);
+			if(curr.right != null)
+				q.add(curr.right,hd+1);
+		}
+		for(Map.Entry<Integer,Integer> arr : hm.entrySet())
+		{
+			System.out.print(arr.getValue()+" ");
+		}
+
+	}
+	//Bottom View of Binary Tree.
+	//Same concept just have to do the reverse of it.
+	public static void bottomView(Node head)
+	{
+		if(head == null)
+			return;
+		Queue<Pair> q = new LinkedList<>();
+		TreeMap<Integer,Integer> hm = new TreeMap<>();
+		q.add(new Pair(head.data,0));
+		while(!q.isEmpty())
+		{
+			Pair p = q.poll();
+			Node curr = p.node;
+			int hd = p.hd;
+			hm.put(hd,curr.data);
+			if(curr.left != null)
+				q.add(curr.left,hd-1);
+			if(curr.right != null)
+				q.add(curr.right,hd+1);
+		}
+		for(Map.Entry<Integer,Integer> arr : hm)
+		{
+			System.out.print(arr.getValue()+" ");
+		}
+	}
 	
 }

@@ -46,7 +46,18 @@ class VerticalTraversal
 			System.out.println();
 		}
 	}
+
 	//Vertical Sum in Binary Tree.
+	class Pair
+	{
+		int hd;
+		int sum;
+		Pair(int h,int s)
+		{
+			hd = h;
+			sum = s;
+		}
+	}
 	public static void verticalSum(Node head)
 	{
 		Queue<Pair> q = new LinkedList<>();
@@ -69,7 +80,7 @@ class VerticalTraversal
 		//printing out sum according to the requirements.
 		for(Map.Entry<Integer,Integer> arr : hm.entrySet())
 		{
-			System.out.println(arr.getValue());
+			System.out.print(arr.getValue()+" ");
 		}
 	}
 }
