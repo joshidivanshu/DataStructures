@@ -76,6 +76,7 @@ class TreeTraversals
 		return sum;
 	}
 	//Spiral Form Traversal of Binary Tree
+	//Implementation using a stack and a queue.
 	public static void spiralTraversal(Node head)
 	{
 		if(root == null)
@@ -108,6 +109,11 @@ class TreeTraversals
 			System.out.println();
 		}
 
+	}
+	//implementation using two stacks.
+	public static void spiralTraversal(Node head)
+	{
+		
 	}
 
 
