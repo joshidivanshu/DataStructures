@@ -18,4 +18,31 @@ class DiameterBT
 		int d3 = diameter(head.right);
 		return Math.max(Math.max(d1,d2),d3);
 	}
+	//precompute the height of everyNode and store it in a map
+	static Map<Node,Integer> hm = new HashMap<>();
+	public static void preprocess(Node head)
+	{
+		if(head == null)
+		{
+			hm.put(head,0);
+			return;
+		}
+		else
+		{
+			int z = 1+Math.max(height(head.left),height(head.right));
+			hm.put(head,z);
+			return;
+		}
+	}
+	public static int fun(Node head)
+	{
+		preprocess(head);
+		if(head == null)
+			return 0;
+		int d1 = hm.get(head);
+		int d2 = hm.get(head.left);
+		int d3 = hm.get(head.right);
+		return Math.max(Math.max(d1,d2),d3);
+	}
+	//efficient Approach.
 }
