@@ -45,4 +45,15 @@ class DiameterBT
 		return Math.max(Math.max(d1,d2),d3);
 	}
 	//efficient Approach.
+	//we modify the height function and use it to get the correct output.
+	static int res = 0;
+	public static int diameter(Node head)
+	{
+		if(head == null)
+			return 0;
+		int lh = diameter(head.left);
+		int rh = diameter(head.right);
+		res = Math.max((lh+rh+1),res);
+		return (1+Math.max(lh,rh)); //same as height function
+	}
 }
