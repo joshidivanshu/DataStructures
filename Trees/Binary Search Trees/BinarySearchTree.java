@@ -36,7 +36,7 @@ class BinarySearchTree
 			else
 				root = root.left;
 		}
-		return true;
+		return false;
 	}
 
 }
