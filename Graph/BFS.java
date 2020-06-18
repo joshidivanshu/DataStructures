@@ -52,4 +52,40 @@ class BFS
 				BFS2(adj,v,i);
 		}
 	}
+	//Count Connected Components in a Graph.
+	public static void BFS2(ArrayList<ArrayList<Integer>> adj,int v,int s)
+	{
+		Queue<Integer> q = new LinkedList<>();
+		visited[s] = true;
+		q.add(s);
+		while(!q.isEmpty())
+		{
+			int u = q.poll();
+			System.out.print(u+" ");
+			for(int v : adj.get(u))
+			{
+				if(visited[v] == false)
+				{
+					visited[s] = true;
+					q.add(s);
+				}
+			}
+		}
+
+	}
+	public static int countConnected(ArrayList<ArrayList<Integer>> adj,int v)
+	{
+		boolean visited[] = new boolean[v+1];
+		int count = 0;
+		for(int i=0;i<v;i++)
+		{
+			if(visited[i] == false)
+			{
+				count++;
+				BFS2(adj,v,i);
+			}
+		}
+		return count;
+	}
+
 }
