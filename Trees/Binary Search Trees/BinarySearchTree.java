@@ -38,5 +38,73 @@ class BinarySearchTree
 		}
 		return false;
 	}
-
+	//Insertion In BST.
+	//recursive implementation.
+	public static void insert(Node root,int x)
+	{
+		if(root == null)
+			return;
+		if(root.data == x)
+			return;
+		else if(root.data > x)
+		{
+			if(root.left == null)
+			{
+				root.left = new Node(x);
+				return;
+			}
+			else
+			{
+				insert(root.left,x);
+			}
+		}
+		else
+		{
+			if(root.right == null)
+			{
+				root.right = new Node(x);
+				return;
+			}
+			else
+			{
+				insert(root.right,x);
+			}
+		}
+	}
+	//recursive implementation
+	public static Node insert(Node root,int x)
+	{
+		if(head == null)
+			return;
+		if(root.data > x)
+			root.left = insert(root.left,x);
+		else if(root.data < x)
+			root.right = insert(root.right,x);
+		return root;
+	}
+	//iterative implementation.
+	public static Node insert(Node root,int x)
+	{
+		Node temp = new Node(x);
+		Node parent = null, curr = root;
+		while(curr != null)
+		{
+			parent = curr;
+			if(curr.data > x)
+			{
+				curr = curr.left;
+			}
+			else if(curr.data < x)
+				curr = curr.right;
+			else
+				return root;
+		}
+		if(parent == null)
+			return temp;
+		if(parent.data > x)
+			parent.left = temp;
+		else
+			parent.right = temp;
+		return root;
+	}
 }
