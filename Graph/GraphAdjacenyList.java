@@ -6,6 +6,17 @@ class GraphAdjacenyList
 		adj.get(u).add(v);
 		adj.get(v).add(u);
 	}
+	public static void printGraph(ArrayList<ArrayList<Integer>> adj)
+	{
+		for(int i=0;i<adj.size();i++)
+		{
+			for(int j=0;j<adj.get(i).size();j++)
+			{
+				System.out.print(adj.get(i).get(j)+" ");
+			}
+			System.out.println();
+		}
+	}
 	public static void main(String[] args)
 	{
 		int v = 5;
