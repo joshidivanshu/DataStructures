@@ -1,3 +1,4 @@
+import java.util.*;
 class BST
 {
 	//search in BST.
@@ -85,6 +86,7 @@ class BST
 			curr = curr.left;
 		return curr;
 	}
+	//floor in BST
 	public static TreeNode floor(TreeNode root,int key)
 	{
 		Node res = null;
@@ -119,6 +121,32 @@ class BST
 			}
 		}
 		return res;
+	}
+	//TreeSet in JAVA (BST)
+	public static void fun()
+	{
+		TreeSet<String> s = new TreeSet<>();
+		s.add("gfg");
+		s.add("courses");
+		s.add("ide");
+		System.out.println(s);
+		System.out.println(s.contains("ide"));
+		Iterator<String> i = s.iterator();
+		while(i.hasNext())
+			System.out.println(i.next());
+		for(String x : s)
+			System.out.println(x);
+		s.remove("gfg");
+		//these functions are not present in hashset they are only present in treeset.
+		TreeSet<Integer> ts = new TreeSet<>();
+		ts.add(10);
+		ts.add(5);
+		ts.add(2);
+		ts.add(11);
+		System.out.println(ts.lower(5));
+		System.out.println(ts.higher(6));
+		System.out.println(ts.floor(5));
+		System.out.println(ts.ceiling(5));
 	}
 
 }
