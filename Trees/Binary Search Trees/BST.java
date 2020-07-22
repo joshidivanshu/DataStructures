@@ -147,6 +147,48 @@ class BST
 		System.out.println(ts.higher(6));
 		System.out.println(ts.floor(5));
 		System.out.println(ts.ceiling(5));
+		System.out.println(ts.first());
+		System.out.println(ts.last());
+		System.out.println(ts.headSet());
+		System.out.println(ts.lowerSet());
 	}
-
+	//TreeMap
+	public static void fun2()
+	{
+		TreeMap<Integer,String> t = new TreeMap<>();
+		t.put(10,"geeks");
+		t.put(15,"ide");
+		t.put(5,"courses");
+		System.out.println(t);
+		System.out.println(t.containsKey(10));
+		for(Map.Entry<Integer,String> e : t.entrySet())
+		{
+			System.out.print(e.getKey()+" "+e.getValue());
+		}
+		//t.remove(10);
+		System.out.println(t.size());
+		System.out.println(t.containsValue("ide"));
+		System.out.println(t.higherKey(10));
+		System.out.println(t.lowerKey(10));
+		System.out.println(t.floorKey(10));
+		System.out.println(t.ceilingKey(10));
+		System.out.println(t.higherEntry(10).getValue());
+		System.out.println(t.lowerEntry(10).getValue());
+		System.out.println(t.floorEntry(10).getValue());
+	}
+	//find ceiling on the left side in an array for every element.
+	public static void fun3(int arr[],int n)
+	{
+		TreeSet<Integer> ts = new TreeSet<>();
+		System.out.print(-1+" ");
+		ts.add(arr[0]);
+		for(int i=1;i<n;i++)
+		{
+			if(ts.ceiling(arr[i]) != null)
+				System.out.print(ts.ceiling(arr[i])+" ");
+			else
+				System.out.print(-1+" ");
+			ts.add(arr[i]);	
+		}
+	}
 }
