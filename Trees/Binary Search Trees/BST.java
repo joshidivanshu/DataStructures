@@ -75,6 +75,7 @@ class BST
 				root.data = suc.data;
 				root.right = delete(root.right,suc.key);
 			}
+			return root;
 		}
 	}
 	public static TreeNode getSucc(TreeNode root)
