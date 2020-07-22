@@ -85,5 +85,22 @@ class BST
 			curr = curr.left;
 		return curr;
 	}
+	public static TreeNode floor(TreeNode root,int key)
+	{
+		Node res = null;
+		while(root != null)
+		{
+			if(root.data == x)
+				return root;
+			else if(root.data > x)
+				root = root.left;
+			else
+			{
+				res = root;
+				root = root.right;
+			}
+		}
+		return res;
+	}
 
 }
