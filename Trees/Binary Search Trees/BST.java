@@ -102,5 +102,23 @@ class BST
 		}
 		return res;
 	}
+	//ceil in BST.
+	public static TreeNode ceil(TreeNode root,int key)
+	{
+		Node res = null;
+		while(root != null)
+		{
+			if(root.data == key)
+				return root;
+			else if(root.data < x)
+				root = root.right;
+			else
+			{
+				res = root;
+				root = root.left;
+			}
+		}
+		return res;
+	}
 
 }
