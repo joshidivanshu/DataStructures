@@ -1,5 +1,6 @@
 class BST
 {
+	//search in BST.
 	public static boolean search(TreeNode root,int key)
 	{
 		if(root == null)
@@ -43,11 +44,45 @@ class BST
 			else
 		     	return root;
 		}
+		//when the parent is itself null.
 		if(parent == null)
 			return temp;
 		if(parent.data > x)
 			parent.left = temp;
 		else
 			parent.right = temp;
+		return root;
 	}
+	//deletion in BST
+	public static TreeNode delete(TreeNode root,int key)
+	{
+		if(root == null)
+			return null;
+		if(root.data > x)
+			root.left = delete(root.left,key);
+		else if(root.data < x)
+			root.right = delete(root.right,key);
+		else
+		{
+			//here we handle the three cases of deletion
+			if(root.left == null)
+				return root.right;
+			else if(root.right == null)
+				return root.left;
+			else
+			{
+				TreeNode suc = getSucc(root);
+				root.data = suc.data;
+				root.right = delete(root.right,suc.key);
+			}
+		}
+	}
+	public static TreeNode getSucc(TreeNode root)
+	{
+		TreeNode curr = root.right;
+		while(curr != null && curr.left != null)
+			curr = curr.left;
+		return curr;
+	}
+
 }
