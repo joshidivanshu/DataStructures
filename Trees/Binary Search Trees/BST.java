@@ -191,4 +191,100 @@ class BST
 			ts.add(arr[i]);	
 		}
 	}
+	//kth smallest element efficiently
+	//naive soln.
+	static int cnt = 0;
+	public static void printK(TreeNode root,int k)
+	{
+		if(root != null)
+		{
+			printK(root.left,k);
+			cnt++;
+			if(cnt == k)
+			{
+				System.out.print(root.key);
+				return;
+			}
+			printK(root.right);
+
+		}
+	}
+	//we modify the tree like this and then perform operations on it.
+	class Node
+	{
+		int key;
+		Node left;
+		Node right;
+		//tells no. of nodes in the left subtree of given node.
+		int lCount;
+		Node(int x)
+		{
+			key = x;
+		}
+	}
+	//check BST.
+	//1 find maximum in left subtree.
+	//2 find minimum in right 
+	//3 if root is greater than left's max and smaller than right's min then 
+	//it is a bst.
+	public static int maximum(TreeNode root)
+	{
+		if(root == null)
+			return -1;
+		int max = Integer.MIN_VALUE;
+		while(root != null)
+		{
+			max = Math.max(root.data,max);
+			root = root.right;
+		}
+		return max;
+	}
+	public static int minimum(TreeNode root)
+	{
+		if(root == null )
+			return -1;
+		int min = Integer.MAX_VALUE;
+		while(root != null)
+		{
+			min = Math.min(min,root.data);
+			root = root.left;
+		}
+		return min;
+	}
+	//T(n) = O(n^2)
+	// doesn't work.
+	public static boolean isBST(TreeNode root)
+	{
+		if(root == null)
+			return true;
+		int min = minimum(root.right);
+		int max = maximum(root.left);
+		if((min < root.data && max > root.data) && (isBST(root.left)==true && isBST(root.right)))
+			return true;
+		return false;
+	}
+	//1 way
+	static boolean isBST(TreeNode root,int min,int max)
+	{
+		if(root == null)
+			return true;
+		return(root.data > min && root.data < max
+			&&isBST(root.left,min,root.data) && isBST(root.right,root.data,max));
+	}
+	//2 way
+	static int prev = Integer.MIN_VALUE;
+	static boolean isBST(TreeNode root)
+	{
+		if(root == null)
+			return true;
+		if(isBST(root.left) == false)
+			return false;
+		if(root.data <= prev)
+			return false;
+		prev = root.data;
+		return isBST(root.right);
+	}
+
+
+
 }
