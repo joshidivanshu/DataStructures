@@ -284,7 +284,39 @@ class BST
 		prev = root.data;
 		return isBST(root.right);
 	}
-
+    //FIX A BST WITH TWO NODES SWAPPED.
+    //naive approach.
+    static ArrayList<Integer> arr = new ArrayList<>();
+    public static void inorder(TreeNode root)
+    {
+    	if(root != null)
+    	{
+    		inorder(root.left);
+    		arr.add(root.data);
+    		inorder(root.right);
+    	}
+    }
+    public static void swap(TreeNode root)
+    {
+    	inorder(root);
+    	int f = 0,e = 0;
+    	for(int i=0;<arr.size()-1;i++)
+    	{
+    		if(arr.get(i) > arr.get(i+1))
+    		{
+    			if(f == 0)
+    				f = i;
+    			else
+    				e = i;
+    		}
+    	}
+    	//swap the elements.
+    	int temp = arr.get(f);
+    	arr.set(f,arr.get(e));
+    	arr.set(e,temp);
+    	for(int i=0;i<arr.size();i++)
+    		System.out.print(arr.get(i)+" ");
+    }
 
 
 }
