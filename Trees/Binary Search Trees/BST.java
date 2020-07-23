@@ -299,21 +299,21 @@ class BST
     public static void swap(TreeNode root)
     {
     	inorder(root);
-    	int f = 0,e = 0;
+    	int prev=Integer.MIN_VALUE,first = -1,second = -1;
     	for(int i=0;<arr.size()-1;i++)
     	{
-    		if(arr.get(i) > arr.get(i+1))
+    		if(arr[i] < prev)
     		{
-    			if(f == 0)
-    				f = i;
-    			else
-    				e = i;
+    			if(first == -1)
+    				first = prev;
+    			second = arr[i];
     		}
+    		prev = arr[i];
     	}
     	//swap the elements.
-    	int temp = arr.get(f);
-    	arr.set(f,arr.get(e));
-    	arr.set(e,temp);
+    	int temp = arr.get(first);
+    	arr.set(first,arr.get(second));
+    	arr.set(second,temp);
     	for(int i=0;i<arr.size();i++)
     		System.out.print(arr.get(i)+" ");
     }
