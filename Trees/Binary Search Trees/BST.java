@@ -386,6 +386,6 @@ class BST
     		s.add(root.data);
     	return isPairSum(root.right,sum,s);
     }
-    // t(n) = O(h)
+    // t(n) = O(n)
 
 }
