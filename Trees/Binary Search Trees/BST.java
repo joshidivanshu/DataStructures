@@ -371,7 +371,21 @@ class BST
     			low++;
     	}
     	return false;
-    }
+    }//T(n) = O(n) and SN = O(n)
 
+    //better approach.
+    static boolean isPairSum(Node root,int sum,HashSet<Integer> s)
+    {
+    	if(root == null)
+    		return false;
+    	if(isPairSum(root.left,sum,s) == true)
+    		return true;
+    	if(s.contains(sum-root.data))
+    		return true;
+    	else
+    		s.add(root.data);
+    	return isPairSum(root.right,sum,s);
+    }
+    // t(n) = O(h)
 
 }
