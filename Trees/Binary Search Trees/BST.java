@@ -310,7 +310,7 @@ class BST
     		}
     		prev = arr[i];
     	}
-    	//first and second are the elements that need to be swapped.
+    	//first and second are the elements indices that need to be swapped.
 
     	
     }
@@ -336,8 +336,12 @@ class BST
     	int d =  first.data;
     	first.data = second.data;
     	second.data = d;
+    	prev = null;
+    	first = null;
+    	second = null;
     	return;
     }
+
 
 
 }
