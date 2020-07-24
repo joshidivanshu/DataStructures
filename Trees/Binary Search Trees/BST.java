@@ -341,7 +341,37 @@ class BST
     	second = null;
     	return;
     }
-
+    //pair with given sum in the BST.
+    //method-1
+    static ArrayList<Integer> a = new ArrayList<>();
+    static int cnt = 0;
+    public static void inorder(TreeNode root)
+    {
+    	if(root != null)
+    	{
+    		inorder(root.left);
+    		a.add(root.data);
+    		cnt++;
+    		inorder(root.right);
+    	}
+    }
+    public static boolean sum(TreeNode root,int sum)
+    {
+    	inorder(root);
+    	//now two pointer approach.
+    	int low = 0;
+    	int high = cnt-1;
+    	while(low<high)
+    	{
+    		if(a.get(low)+a.get(high) == sum)
+    			return true;
+    		else if(a.get(low)+a.get(high) > sum)
+    			high--;
+    		else
+    			low++;
+    	}
+    	return false;
+    }
 
 
 }
