@@ -387,5 +387,27 @@ class BST
     	return isPairSum(root.right,sum,s);
     }
     // t(n) = O(n)
+    //vertical sum in Binary Tree.
+    //we make the use of horizontal distance
+    //here hd denotes the horizontal distance.
+    public static void vSumR(TreeNode root,int hd,TreeMap<Integer,Integer> tm)
+    {
+    	if(root == null)
+    		return;
+    	vSumR(root.left,hd-1,tm);
+    	int psum = (tm.get(hd) == null) ? 0 : tm.get(hd);
+    	mp.put(hd,psum+root.data);
+    	vSumR(root.right,hd+1,tm);
+    }
+    public static void fun(TreeNode root)
+    {
+    	TreeMap<Integer,Integer> tm = new TreeMap<>();
+    	vSumR(root,0,tm);
+    	for(Map.Entry<Integer,Integer> e : tm.entrySet())
+    	{
+    		System.out.print(e.getValue()+" ");
+    	}
+
+    }
 
 }
