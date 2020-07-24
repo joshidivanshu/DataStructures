@@ -272,8 +272,8 @@ class BST
 			&&isBST(root.left,min,root.data) && isBST(root.right,root.data,max));
 	}
 	//2 way
-	static int prev = Integer.MIN_VALUE;
-	static boolean isBST(TreeNode root)
+	public static int prev = Integer.MIN_VALUE;
+	public static boolean isBST(TreeNode root)
 	{
 		if(root == null)
 			return true;
@@ -299,23 +299,44 @@ class BST
     public static void swap(TreeNode root)
     {
     	inorder(root);
-    	int prev=Integer.MIN_VALUE,first = -1,second = -1;
-    	for(int i=0;<arr.size()-1;i++)
+    	int prev=arr[0],first = -1,second = -1;
+    	for(int i=1;<arr.size()-1;i++)
     	{
     		if(arr[i] < prev)
     		{
     			if(first == -1)
-    				first = prev;
-    			second = arr[i];
+    				first = i-1
+    			second = i;
     		}
     		prev = arr[i];
     	}
-    	//swap the elements.
-    	int temp = arr.get(first);
-    	arr.set(first,arr.get(second));
-    	arr.set(second,temp);
-    	for(int i=0;i<arr.size();i++)
-    		System.out.print(arr.get(i)+" ");
+    	//first and second are the elements that need to be swapped.
+
+    	
+    }
+    //The same approach applied to trees.
+    TreeNode prev=null,first =null,second =null;
+    public void fixBST(TreeNode root)
+    {
+    	if(root == null)
+    		return;
+    	fixBST(root.left);
+    	if(prev != null && root.key < prev.key)
+    	{
+    		if(first == null)
+    			first = prev;
+    		second = root;
+    	}
+    	prev = root;
+    	fixBST(root.right);
+    }
+    public static void fun(TreeNode root)
+    {
+    	fixBST(root);
+    	int d =  first.data;
+    	first.data = second.data;
+    	second.data = d;
+    	return;
     }
 
 
