@@ -409,5 +409,34 @@ class BST
     	}
 
     }
+    //VERTICAL TRAVERSAL OF BINARY SEARCH TREE.
+    public static void verticalTrav(TreeNode root,int hd,TreeMap<Integer,Integer> tm)
+    {
+    	if(root == null)
+    		return;
+    	verticalTrav(root.left,hd-1,tm);
+    	if(!hm.containsKey(hd))
+    		hm.put()
+    }
+    public static void fun(TreeNode root)
+    {
+    	TreeMap<Integer,Integer> tm = new TreeMap<>();
+
+    }
+    //maximum Smaller elements on right side of the array for a particular element
+    //this problem can be solved using Balanced Binary Search trees.
+    public static void smallerOnRight(int arr[],int n){
+        
+        TreeSet<Integer> s=new TreeSet<>();
+        TreeSet<Integer> headSet= new TreeSet<>();
+        s.add(arr[n-1]);
+        int count=0;
+        for(int i=n-2;i>=0;i--){
+        headSet=(TreeSet<Integer>)s.headSet(arr[i]);
+        count=Math.max(count,headSet.size());
+        s.add(arr[i]);
+        }
+        System.out.println(count);
+    }
 
 }
