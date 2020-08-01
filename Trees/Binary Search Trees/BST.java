@@ -448,6 +448,28 @@ class BST
         }
         System.out.println(count);
     }
-    
+    //convert level order traversal to BST.
+    public static Node constructBST(int arr[],int n)
+    {
+    	if(n == 0)
+    		return null;
+    	Node root = null;
+    	for(int i=0;i<n;i++)
+    		root = levelOrder(root,arr[i]);
+    	return root;
+    }
+    public static Node levelOrder(Node root,int d)
+    {
+    	if(root == null)
+		{
+			root  = new Node(d);
+			return root;
+		}
+		if(d <= root.data)
+			root.left = levelOrder(root.left,d);
+		else
+			root.right = levelOrder(root.right,d);
+		return root;
+    }
 
 }

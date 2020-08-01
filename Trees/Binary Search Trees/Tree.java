@@ -242,6 +242,100 @@ class Tree
 		TreeNode prev = null,head = null;
 		inorder(root,prev,head);
 		return head;
-
+	}
+	//mirror of a tree
+	public static void mirror(TreeNode root)
+	{
+		if(root == null)
+			return;
+		else
+		{
+			mirror(root.left);
+			mirror(root.right);
+			Node temp = root.left;
+			root.left = root.right;
+			root.right = temp;
+		}
+	}
+	//foldable binary tree.
+	public static void mirror(Node root)
+    {
+        if(root == null)
+            return;
+        else
+        {
+            mirror(root.left);
+            mirror(root.right);
+            Node temp = root.left;
+            root.left = root.right;
+            root.right = temp;
+        }
+    }
+    static boolean isStruct(Node root1,Node root2)
+    {
+        if(root1 == null && root2 == null)
+            return true;
+        if(root1 == null && root2 != null)
+            return false;
+        if(root1 != null && root2 == null)
+            return false;
+        else
+        {
+            if(root1.left == null && root2.left != null)
+                return false;
+            if(root1.right == null && root2.right != null)
+                return false;
+            if(root1.left != null && root2.left == null)
+                return false;
+            if(root1.right != null && root2.right == null)
+                return false;
+            return isStruct(root1.left,root2.left) && isStruct(root1.right,root2.right);    
+        }
+    }
+    boolean IsFoldable(Node root) 
+	{ 
+		// your code 
+		if(root == null)
+		    return true;
+		mirror(root.left);
+		boolean res = isStruct(root.left,root.right);
+		mirror(root.left);
+		return res;
+		
+	} 
+	//Tree traversal in spiral form.
+	public static void fun(Node root)
+	{
+		if(root == null)
+			return;
+		Queue<Node> q = new LinkedList<>();
+		Stack<Integer> st = new Stack<>();
+		q.add(root);
+		boolean reverse= false;
+		while(!q.isEmpty())
+		{
+			int count = q.size();
+			for(int i=0;i<count;i++)
+			{
+				Node curr = q.poll();
+				if(reverse)
+					st.push(curr.data);
+				else
+					System.out.print(curr.data+" ");
+				if(curr.left != null)
+					q.add(curr.left);
+				if(curr.right != null)
+					q.add(curr.right);
+			}
+			if(reverse)
+			{
+				while(!st.isEmpty())
+				{
+					System.out.print(st.pop()+" ");
+				}
+			}
+			reverse = !=reverse;
+			System.out.println();
+		}
 	}
 }
